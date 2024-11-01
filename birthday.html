@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="person.jpg" alt="Person's Photo" class="person-photo">
+        <h1 class="animated-title">Happy Birthday, Cartoon!</h1>
+        <p class="animated-text">Today is a special day because it’s the day you came into the world and made it brighter. I hope this day brings you as much joy as you bring to those around you. And this day is very special to me also in this day I saw you for the first time.</p>
+        <div class="wish-container">
+            <p class="wish animated-text">Wishing you all the love, happiness, and success in the world!</p>
+        </div>
+        <p class="animated-text">You light up my life, and I'm so grateful to know you. Enjoy your special day! And thank you very much for whatever you did for me. If my life is a book, then you are the endless chapter of that book.</p>
+        <div class="wish-container">
+            <p class="wish animated-text">Actually, you don't need a special day to remind me how important you are in my life. I don't know how special this day is for you, but for me, today is a special day because it is your birthday. Meeting you is one of the greatest blessings in my life.</p>
+        </div>
+        <button id="playButton">Play Song</button>
+        <button id="nextButton">Next</button>
+    </div>
+    <audio id="birthdaySong" src="birthday_song.mp3" loop></audio>
+    <script>
+        window.onload = function() {
+            var playbackPosition = sessionStorage.getItem('playbackPosition');
+            if (playbackPosition) {
+                document.getElementById('birthdaySong').currentTime = parseFloat(playbackPosition);
+                document.getElementById('birthdaySong').play();
+            } else {
+                document.getElementById('birthdaySong').play();
+            }
+        };
+
+        document.getElementById('playButton').addEventListener('click', function() {
+            document.getElementById('birthdaySong').play();
+            document.getElementById('playButton').classList.add('hidden');
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            // Store the current playback position in session storage
+            sessionStorage.setItem('playbackPosition', document.getElementById('birthdaySong').currentTime.toString());
+            // Don't pause the song, let it continue playing
+            window.location.href = 'wishes.html';
+        });
+    </script>
+    <script src="butterflies.js"></script>
+</body>
+</html>

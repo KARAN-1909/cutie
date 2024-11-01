@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Wishes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="person.jpg" alt="Person's Photo" class="person-photo">
+        <h1 class="animated-title">More Wishes for You, Cartoon!</h1>
+        <p class="animated-text">May your birthday be filled with endless moments of joy, laughter, and unforgettable memories.</p>
+        <div class="wish-container">
+            <p class="wish animated-text">You deserve all the happiness and love in the world. Happy Birthday once again!</p>
+        </div>
+        <p class="animated-text">Looking forward to celebrating many more birthdays with you!</p>
+        <button id="playButton">Play Song</button>
+    </div>
+    <audio id="birthdaySong" src="birthday_song.mp3" loop></audio>
+    <script>
+        window.onload = function() {
+            var playbackPosition = sessionStorage.getItem('playbackPosition');
+            if (playbackPosition) {
+                document.getElementById('birthdaySong').currentTime = parseFloat(playbackPosition);
+                document.getElementById('birthdaySong').play();
+            } else {
+                document.getElementById('birthdaySong').play();
+            }
+        };
+
+        document.getElementById('playButton').addEventListener('click', function() {
+            document.getElementById('birthdaySong').play();
+            document.getElementById('playButton').classList.add('hidden');
+        });
+    </script>
+    <script src="butterflies.js"></script>
+</body>
+</html>
